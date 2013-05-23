@@ -6,12 +6,11 @@ import java.sql.*;
  *
  * @author Jean Lucas
  */
-public class conexao {
-
+ public class Conexao{
     Connection con;
     Statement stmt;
     ResultSet rs;
-    String url = "jdbc:mysql://189.5.186.155:3306/teste";
+    String url = "jdbc:mysql://127.0.0.1:3306/mydb";
     String user = "root";
     String password = "1234567890";
     String driver = "com.mysql.jdbc.Driver";
@@ -55,10 +54,20 @@ public class conexao {
     }
     // Prateleira (Adicionar Produto , Retirar Produto, Adicionar Preco Final).	
 
-    public void adicionar_produto_prateleira(String id, String qntd) {
+    public void adicionar_produto_prateleira(String id, int qntd) {
+        try{
+            PreparedStatement pst = null;
+        
+            openConnectionMySql();
+                    
+             pst = con.prepareStatement("INSERT INTO Prateleira(ID_Prateleira,localizacao,Estabelecimento_ID_Estabelecimento) VALUES("+id+","+qntd+",2)");
+             pst.executeUpdate();
+        }catch(Exception e){
+            System.out.println("ERRO :"+e);
+        }
     }
 
-    public void retirar_produto_prateleira(String id, String qntd) {
+    public void retirar_produto_prateleira(String id, int qntd) {
     }
 
     public void atualizar_precoFinal(String id, String precoFinal) {
