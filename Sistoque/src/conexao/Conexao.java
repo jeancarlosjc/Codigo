@@ -85,4 +85,8 @@ import java.sql.*;
 
     public void deletar_venda(String id) {
     }
+
+    public void estocar(String id, int quant) {
+        
+    }
 }
