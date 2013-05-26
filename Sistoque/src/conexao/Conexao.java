@@ -89,4 +89,8 @@ import java.sql.*;
     public void estocar(String id, int quant) {
         
     }
+
+    public void DadosEstab(String NomeEstabelecimento, Float Caixa) {
+       
+    }
 }
