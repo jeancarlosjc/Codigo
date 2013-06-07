@@ -71,6 +71,16 @@ import java.sql.*;
     }
 
     public void atualizar_precoFinal(String id, String precoFinal) {
+    try{
+            PreparedStatement pst = null;
+        
+            openConnectionMySql();
+                    
+             pst = con.prepareStatement("update PRATELEIRA set precofinal = "+precoFinal+"");
+             pst.executeUpdate();
+        }catch(Exception e){
+            System.out.println("ERRO :"+e);
+        }
     }
 
     public void atualizar_produto_prateleira(String id, String qntd) {
