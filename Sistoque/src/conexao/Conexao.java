@@ -1,12 +1,15 @@
 package conexao;
-
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author Jean Lucas
  */
  public class Conexao{
+    public List<classes.Produto> produtos = new ArrayList<classes.Produto>();
+    classes.Produto produto = new classes.Produto();
     Connection con;
     Statement stmt;
     ResultSet rs;
@@ -26,35 +29,62 @@ import java.sql.*;
     }
     //Cliente (Inserir Cliente , Deletar Cliente ).
 
-    public void insere_cliente(String nome, boolean pessoaJuridica, int cpf, int cnpj) {
+    public void insereCliente(String nome, boolean pessoaJuridica, int cpf, int cnpj) {
     }
     //Deleta cliente baseado em número de cpf que é uma identificação única.
 
-    public void delete_cliente(String nome, int cpf) {
+    public void deleteCliente(String nome, int cpf) {
     }
 
     //Estoque (Adicionar Produto , deletar Produto).
-    public void adicionar_produto() {
+    public void adicionarProdutoEstoque(int id, String nome, String descricao, int qntd , float precoVenda, float precoCompra) {
+        
     }
 
-    public void deletar_produto(String id) {
+    public void deletarProdutoEstoque(int id , String nome) {
     }
 
-    public void atualizar_quantidade(int id, int quantidade) {
+    public void atualizarQuantidadeEstoque(int id,String nome, int quantidade) {
+    }
+    public void consultarProdutoEstoque(String nome){
+        
     }
     //Produto (Inserir Produto).
 
-    public void inserir_produto(String nome, String descricao, int quantidade, float precoVenda, float precoCompra) {
+    public void inserirProduto(String nome, String descricao, int quantidade, float precoVenda, float precoCompra) {
     }
 
-    public void consultar_produto(String id) {
+    public List consultarProduto(String id) {
+        if(id.equals("")){
+        try{
+                    openConnectionMySql();
+                    stmt = con.createStatement();
+                    
+                    String SQL = "select * from produto";
+                   rs = stmt.executeQuery(SQL);
+                   while (rs.next()){
+                    produto.setId(rs.getString("ID_Produto"));
+                    produto.setNome(rs.getString("nome"));
+                    produto.setDescricao(rs.getString("descricao"));
+                    produto.setQuantidade(rs.getInt("Quantidade_produto"));
+                    produto.setPrecoCompra(rs.getFloat("PrecoVenda"));
+                    produto.setPrecoVenda(rs.getFloat("PrecoCompra"));
+                    produtos.add(produto);
+                   }
+                   return produtos;
+                }catch(Exception e){
+                    System.out.println("Erro na conexao com o banco"+e);
+                }
+        }
+        
+        return produtos;
     }
 
-    public void atualizar_produto(String nome, String descricao, int quantidade, float precoVenda, float precoCompra) {
+    public void atualizarProduto(String nome, String descricao, int quantidade, float precoVenda, float precoCompra) {
     }
     // Prateleira (Adicionar Produto , Retirar Produto, Adicionar Preco Final).	
 
-    public void adicionar_produto_prateleira(String id, int qntd) {
+    public void adicionarProdutoPrateleira(String id, int qntd) {
         try{
             PreparedStatement pst = null;
         
@@ -67,10 +97,10 @@ import java.sql.*;
         }
     }
 
-    public void retirar_produto_prateleira(String id, int qntd) {
+    public void retirarProdutoPrateleira(String id, int qntd) {
     }
 
-    public void atualizar_precoFinal(String id, String precoFinal) {
+    public void atualizarPrecoFinal(String id, String precoFinal) {
     try{
             PreparedStatement pst = null;
         
@@ -83,20 +113,17 @@ import java.sql.*;
         }
     }
 
-    public void atualizar_produto_prateleira(String id, String qntd) {
+    public void atualizarProduto_prateleira(String id, String qntd) {
     }
     //Venda (Inserir Venda , Consultar Venda , Deletar Venda).
 
-    public void inserir_venda(String id, String data, String precoTotal, String comprador, String vendedor, String idprodutos) {
+    public void inserirVenda(String id, String data, String precoTotal, String comprador, String vendedor, String idprodutos) {
     }
 
-    public void consultar_venda(String id) {
+    public void consultarVenda(String id) {
     }
 
-    public void deletar_venda(String id) {
+    public void deletarVenda(String id) {
     }
 
-    public void estocar(String id, int quant) {
-        
-    }
 }
