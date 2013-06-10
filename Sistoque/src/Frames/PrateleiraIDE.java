@@ -180,6 +180,11 @@ public class PrateleiraIDE extends javax.swing.JFrame {
             }
         });
         TabelaProdutos.setUpdateSelectionOnSort(false);
+        TabelaProdutos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TabelaProdutosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(TabelaProdutos);
 
         jButton2.setText("ATUALIZAR");
@@ -213,15 +218,15 @@ public class PrateleiraIDE extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
-                            .addComponent(ComboProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ComboProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addGap(139, 139, 139))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(qntd, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jButton5)
                                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))))
@@ -312,6 +317,12 @@ public class PrateleiraIDE extends javax.swing.JFrame {
         }       
    
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void TabelaProdutosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabelaProdutosMouseClicked
+        int linha = TabelaProdutos.getSelectedRow();
+        nomeProdutoAtualizar.setText(TabelaProdutos.getValueAt(linha,1).toString());
+        nomeProdutoDeletar.setText(TabelaProdutos.getValueAt(linha,1).toString());
+    }//GEN-LAST:event_TabelaProdutosMouseClicked
 
     /**
      * @param args the command line arguments
