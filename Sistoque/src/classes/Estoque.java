@@ -16,4 +16,5 @@ public class Estoque {
     String id;
     private int quant;
     double precoCompra;    
+    
 }

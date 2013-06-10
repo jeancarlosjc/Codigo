@@ -1,4 +1,5 @@
 package conexao;
+import classes.*;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,25 +9,30 @@ import java.util.List;
  * @author Jean Lucas
  */
  public class Conexao{
-    public List<classes.Produto> produtos = new ArrayList<classes.Produto>();
-    classes.Produto produto = new classes.Produto();
-    Connection con;
+    Lista listaprodutos = new Lista();
+   
+   Produto[] produto = new Produto[1000];
+   
+
+        
+
+   Connection con;
     Statement stmt;
     ResultSet rs;
-    String url = "jdbc:mysql://127.0.0.1:3306/mydb";
+    String url = "jdbc:mysql://localhost:3306/mydb";
     String user = "root";
     String password = "1234567890";
     String driver = "com.mysql.jdbc.Driver";
-
-    public void openConnectionMySql() {
-        try {
-            Class.forName(driver).newInstance();
-            con = DriverManager.getConnection(url, user, password);
-            stmt = con.createStatement();
-        } catch (Exception e) {
-            System.out.println("Erro na conexao com o banco" + e);
-        }
-    }
+            public void openConnectionMySql(){
+                try{
+                    Class.forName(driver).newInstance();
+                    con = DriverManager.getConnection(url,user,password);
+                    stmt = con.createStatement();
+                }
+                catch (Exception e){
+                    System.out.println("Erro na conexao com o banco"+e);
+                }
+            }
     //Cliente (Inserir Cliente , Deletar Cliente ).
 
     public void insereCliente(String nome, boolean pessoaJuridica, int cpf, int cnpj) {
@@ -54,30 +60,39 @@ import java.util.List;
     public void inserirProduto(String nome, String descricao, int quantidade, float precoVenda, float precoCompra) {
     }
 
-    public List consultarProduto(String id) {
+        public  List<Produto> consultarProduto(String id) {
+        
         if(id.equals("")){
+           int i = 0;
         try{
+            for (int j = 0; j < 1000; j++) {
+           produto [j] = new Produto();
+        }
                     openConnectionMySql();
                     stmt = con.createStatement();
                     
                     String SQL = "select * from produto";
                    rs = stmt.executeQuery(SQL);
                    while (rs.next()){
-                    produto.setId(rs.getString("ID_Produto"));
-                    produto.setNome(rs.getString("nome"));
-                    produto.setDescricao(rs.getString("descricao"));
-                    produto.setQuantidade(rs.getInt("Quantidade_produto"));
-                    produto.setPrecoCompra(rs.getFloat("PrecoVenda"));
-                    produto.setPrecoVenda(rs.getFloat("PrecoCompra"));
-                    produtos.add(produto);
+                      produto[i].setId(rs.getString("ID_Produto"));
+                       System.out.println(produto[i].getId());
+                    produto[i].setNome(rs.getString("nome_produto"));
+                    produto[i].setDescricao(rs.getString("descricao"));
+                    produto[i].setQuantidade(rs.getInt("Quantidade_produto"));
+                    produto[i].setPrecoCompra(rs.getFloat("PrecoVenda"));
+                    produto[i].setPrecoVenda(rs.getFloat("PrecoCompra"));
+                    listaprodutos.produtos.add(produto[i]);
+                       
+                       i++;
                    }
-                   return produtos;
+                   return (List<Produto>) listaprodutos.produtos;
                 }catch(Exception e){
                     System.out.println("Erro na conexao com o banco"+e);
                 }
+       
         }
         
-        return produtos;
+     return (List<Produto>) listaprodutos.produtos;
     }
 
     public void atualizarProduto(String nome, String descricao, int quantidade, float precoVenda, float precoCompra) {
