@@ -1,4 +1,5 @@
 package conexao;
+import entidade.Produto;
 import classes.*;
 import java.sql.*;
 import java.util.ArrayList;

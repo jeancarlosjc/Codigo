@@ -1,6 +1,7 @@
 package classes;
 
 
+import entidade.Produto;
 import conexao.Conexao;
 import java.util.ArrayList;
 import java.util.List;

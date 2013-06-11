@@ -1,4 +1,4 @@
-package classes;
+package entidade;
 
 
 
@@ -21,6 +21,9 @@ public class Produto {
     private float precoVenda;
     private float precoCompra;
 
+    public Produto(){    
+    }
+    
     public String getId() {
         return id;
     }

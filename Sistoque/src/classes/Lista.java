@@ -4,6 +4,7 @@
  */
 package classes;
 
+import entidade.Produto;
 import java.util.ArrayList;
 import java.util.List;
 

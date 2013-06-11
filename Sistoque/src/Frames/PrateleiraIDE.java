@@ -2,7 +2,7 @@ package Frames;
 
 import java.util.ArrayList;
 import java.util.List;
-import classes.Produto;
+import entidade.Produto;
 import javax.swing.JTable;
 import classes.*;
 
