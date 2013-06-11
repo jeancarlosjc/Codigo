@@ -14,8 +14,6 @@ public class Prateleira {
     Conexao conexao = new Conexao();
     String id;
     private int qntd;
-    private String localizacao;
-
    
 
     public void adicionar_Produto() {
