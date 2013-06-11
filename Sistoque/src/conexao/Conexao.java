@@ -1,6 +1,5 @@
 package conexao;
-import entidade.Produto;
-import classes.*;
+import entidade.*;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,8 +10,8 @@ import java.util.List;
  */
  public class Conexao{
     Lista listaprodutos = new Lista();
-   
-   Produto[] produto = new Produto[1000];
+    Produto produto = new Produto();
+   Produto[] produtos = new Produto[1000];
    
 
         
@@ -53,8 +52,8 @@ import java.util.List;
 
     public void atualizarQuantidadeEstoque(int id,String nome, int quantidade) {
     }
-    public void consultarProdutoEstoque(String nome){
-        
+    public Produto consultarProdutoEstoque(String nome){
+        return produto;
     }
     //Produto (Inserir Produto).
 
@@ -62,12 +61,11 @@ import java.util.List;
     }
 
         public  List<Produto> consultarProduto(String id) {
-        
         if(id.equals("")){
            int i = 0;
         try{
             for (int j = 0; j < 1000; j++) {
-           produto [j] = new Produto();
+           produtos[j] = new Produto();
         }
                     openConnectionMySql();
                     stmt = con.createStatement();
@@ -75,15 +73,14 @@ import java.util.List;
                     String SQL = "select * from produto";
                    rs = stmt.executeQuery(SQL);
                    while (rs.next()){
-                      produto[i].setId(rs.getString("ID_Produto"));
-                       System.out.println(produto[i].getId());
-                    produto[i].setNome(rs.getString("nome_produto"));
-                    produto[i].setDescricao(rs.getString("descricao"));
-                    produto[i].setQuantidade(rs.getInt("Quantidade_produto"));
-                    produto[i].setPrecoCompra(rs.getFloat("PrecoVenda"));
-                    produto[i].setPrecoVenda(rs.getFloat("PrecoCompra"));
-                    listaprodutos.produtos.add(produto[i]);
-                       
+                      produtos[i].setId(rs.getString("ID_Produto"));
+                       System.out.println(produtos[i].getId());
+                    produtos[i].setNome(rs.getString("nome_produto"));
+                    produtos[i].setDescricao(rs.getString("descricao"));
+                    produtos[i].setQntd(rs.getInt("quantidade_produto"));
+                    produtos[i].setPrecoCompra(rs.getFloat("PrecoVenda"));
+                    produtos[i].setPrecoVenda(rs.getFloat("PrecoCompra"));
+                    listaprodutos.produtos.add(produtos[i]);
                        i++;
                    }
                    return (List<Produto>) listaprodutos.produtos;

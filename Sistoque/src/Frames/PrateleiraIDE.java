@@ -1,10 +1,9 @@
 package Frames;
 
-import java.util.ArrayList;
-import java.util.List;
-import entidade.Produto;
-import javax.swing.JTable;
-import classes.*;
+import entidade.Prateleira;
+
+import entidade.*;
+
 
 /**
  *
@@ -301,8 +300,7 @@ public class PrateleiraIDE extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-         
-        int i = 0;
+         int i = 0;
        listaprodutos.produtos  = prateleira.consultarProduto();
               
            
@@ -311,7 +309,7 @@ public class PrateleiraIDE extends javax.swing.JFrame {
         for (Produto produto : listaprodutos.produtos) {
               TabelaProdutos.setValueAt(produto.getId(),i,0);
               TabelaProdutos.setValueAt(produto.getNome(), i, 1);
-              TabelaProdutos.setValueAt(produto.getQuantidade(), i, 2);
+              TabelaProdutos.setValueAt(produto.getQntd(), i, 2);
               TabelaProdutos.setValueAt(produto.getPrecoVenda(), i, 3);
               i++;
         }       
