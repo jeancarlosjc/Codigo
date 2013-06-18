@@ -2,13 +2,6 @@ package entidade;
 
 import conexao.Conexao;
 
-
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  *
  * @author Fernando
