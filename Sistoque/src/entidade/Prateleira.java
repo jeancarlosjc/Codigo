@@ -1,9 +1,8 @@
 package entidade;
 
-import entidade.Produto;
-import conexao.Conexao;
-import java.util.ArrayList;
-import java.util.List;
+import entidade.*;
+import conexao.*;
+import java.util.*;
 
 /**
  *
@@ -11,8 +10,10 @@ import java.util.List;
  */
 public class Prateleira {
 
+    
+
     Lista lista = new Lista();
-     Conexao conexao = new Conexao();
+    Conexao conexao = new Conexao();
     private String id;
     private String descricao;
     private int qntd;
@@ -63,4 +64,12 @@ public class Prateleira {
     public void setQntd() {
         this.qntd = qntd;
     }
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+  
 }

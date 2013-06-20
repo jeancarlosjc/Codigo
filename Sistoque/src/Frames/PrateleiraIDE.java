@@ -3,6 +3,7 @@ package Frames;
 import entidade.Prateleira;
 
 import entidade.*;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -10,15 +11,17 @@ import entidade.*;
  * @author Jean Lucas
  */
 public class PrateleiraIDE extends javax.swing.JFrame {
-   Lista listaprodutos = new Lista();
-   Prateleira prateleira = new Prateleira();
+   Prateleira prateleira = new Prateleira() ;
+         Lista listaprodutos = new Lista();
+        
   
-
     /**
      * Creates new form PrateleiraIDE
      */
     public PrateleiraIDE() {
         initComponents();
+        
+ 
     }
 
     /**
@@ -301,8 +304,10 @@ public class PrateleiraIDE extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
          int i = 0;
+        
        listaprodutos.produtos  = prateleira.consultarProduto();
-              
+       
+        if(listaprodutos.produtos.size()<0){      
            
 
 
@@ -312,7 +317,8 @@ public class PrateleiraIDE extends javax.swing.JFrame {
               TabelaProdutos.setValueAt(produto.getQntd(), i, 2);
               TabelaProdutos.setValueAt(produto.getPrecoVenda(), i, 3);
               i++;
-        }       
+        }       }
+        else JOptionPane.showMessageDialog(null,"Não contém produtos");
    
     }//GEN-LAST:event_jButton5ActionPerformed
 

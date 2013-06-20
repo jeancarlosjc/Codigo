@@ -43,8 +43,17 @@ import java.util.List;
     }
 
     //Estoque (Adicionar Produto , deletar Produto).
-    public void adicionarProdutoEstoque(int id, String nome, String descricao, int qntd , float precoVenda, float precoCompra) {
+    public void adicionarProdutoEstoque(int id_produto, String nome, String descricao, int qntd , float precoVenda, float precoCompra) {
+        try{
+            PreparedStatement pst = null;
         
+            openConnectionMySql();
+                    
+             pst = con.prepareStatement("INSERT INTO ESTOQUE(id_estoque, Estabelecimento_ID_Estabelecimento,produto,nome_produto, quantidade_produto, descricao, precoVenda, precoCompra) VALUES(1,2,"+id_produto+","+nome+","+qntd+","+descricao+","+precoVenda+","+precoCompra+")");
+             pst.executeUpdate();
+        }catch(Exception e){
+            System.out.println("ERRO :"+e);
+        }
     }
 
     public void deletarProdutoEstoque(int id , String nome) {
@@ -70,7 +79,7 @@ import java.util.List;
                     openConnectionMySql();
                     stmt = con.createStatement();
                     
-                    String SQL = "select * from produto";
+                    String SQL = "select * from estoque";
                    rs = stmt.executeQuery(SQL);
                    while (rs.next()){
                       produtos[i].setId(rs.getString("ID_Produto"));

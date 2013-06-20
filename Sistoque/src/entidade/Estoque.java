@@ -7,13 +7,15 @@ import conexao.Conexao;
  * @author Fernando
  */
 public class Estoque {
-    conexao.Conexao conexao = new conexao.Conexao();
+    Lista lista = new Lista();
+     Conexao conexao = new Conexao();
     Produto produto = new Produto();
-    private String id;
+    
+    private int id;
     private String nome;
     private String descricao;
-    private String precoVenda;
-    double precoCompra;
+    private float precoVenda;
+    float precoCompra;
     private int quant;
 
     public Conexao getConexao() {
@@ -32,11 +34,11 @@ public class Estoque {
         this.produto = produto;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -56,20 +58,20 @@ public class Estoque {
         this.descricao = descricao;
     }
 
-    public String getPrecoVenda() {
+    public float getPrecoVenda() {
         return precoVenda;
     }
 
-    public void setPrecoVenda(String precoVenda) {
+    public void setPrecoVenda(float precoVenda) {
         this.precoVenda = precoVenda;
     }
 
-    public double getPrecoCompra() {
+    public float getPrecoCompra() {
         return precoCompra;
     }
 
-    public void setPrecoCompra(double precoCompra) {
-        this.precoCompra = precoCompra;
+    public void setPrecoCompra(float precoCompra) {
+        this.precoCompra =  precoCompra;
     }
 
     public int getQuant() {
@@ -79,10 +81,10 @@ public class Estoque {
     public void setQuant(int quant) {
         this.quant = quant;
     }
-    public void adicionarProdutoEstoque(String id, String descricao, int qntd, float precoVenda, float precoCompra){
-        
+    public void adicionarProdutoEstoque(int id,String nome, String descricao, int qntd, float precoVenda, float precoCompra){
+        conexao.adicionarProdutoEstoque(qntd, nome, descricao, qntd, precoVenda, precoCompra);
     }
-    public void retirarProdutoEstoque(String id , String nome){
+    public void retirarProdutoEstoque(int id , String nome){
         
     }
     public Produto consultarProdutoEstoque(String nome){
@@ -91,4 +93,5 @@ public class Estoque {
     public void atualizaProdutoEstoque(String id, String nome, int qntd){
         
     }
+    
 }
