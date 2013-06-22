@@ -4,12 +4,13 @@
  */
 package Frames;
 
+import entidade.*;
+
 /**
  *
  * @author Jean Lucas
  */
 public class ProdutoIDE extends javax.swing.JFrame {
-
     /**
      * Creates new form ProdutoIDE
      */

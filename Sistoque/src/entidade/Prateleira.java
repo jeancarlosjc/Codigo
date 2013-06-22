@@ -2,6 +2,8 @@ package entidade;
 
 import entidade.*;
 import conexao.*;
+import entidade.Lista;
+import entidade.Produto;
 import java.util.*;
 
 /**
@@ -10,19 +12,19 @@ import java.util.*;
  */
 public class Prateleira {
 
-    
-
-    Lista lista = new Lista();
+     Lista lista = new Lista();
     Conexao conexao = new Conexao();
-    private String id;
+
+   
+    private int id;
     private String descricao;
     private int qntd;
     private float precoVenda;
     private float precoCompra;
     
 
-    public void adicionar_Produto() {
-        conexao.adicionarProdutoPrateleira("1298712", 10);
+    public void adicionar_Produto(int ID_Estabelecimento, int id_produto, String nome_produto, String descricao, int qntd, float precoVenda, float precoCompra) {
+        conexao.adicionarProdutoPrateleira(ID_Estabelecimento, id_produto,  nome_produto,  descricao, qntd,  precoVenda,  precoCompra);
     }
 
     public void retirar_Produto() {
@@ -30,7 +32,7 @@ public class Prateleira {
     }
 
     public List<Produto> consultarProduto() {
-        return conexao.consultarProduto("");
+        return  conexao.consultarProduto();
     }
 
     public float getPrecoVenda() {
@@ -49,11 +51,11 @@ public class Prateleira {
         this.precoCompra = precoCompra;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -71,5 +73,5 @@ public class Prateleira {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
-  
+ 
 }

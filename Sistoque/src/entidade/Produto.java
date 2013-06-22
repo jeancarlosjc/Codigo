@@ -12,8 +12,6 @@ package entidade;
  * @author Ademar
  */
 public class Produto {
-    
-    conexao.Conexao conexao = new conexao.Conexao();
     String id;
     private String nome;
     private String descricao;
