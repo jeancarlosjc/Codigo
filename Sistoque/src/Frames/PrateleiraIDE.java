@@ -11,8 +11,37 @@ import entidade.*;
 public class PrateleiraIDE extends javax.swing.JFrame {
          Prateleira prateleira = new Prateleira();
          Lista listaprodutos = new Lista();
-         
-        
+        public void atualizarTabelas(){
+            int i = 0;
+       listaprodutos.produtos.removeAll(listaprodutos.produtos);   
+       listaprodutos.produtos  = prateleira.consultarProduto(); 
+
+
+TabelaProdutos.removeAll();
+TabelaProdutosPrateleira.removeAll();
+        for (Produto produto : listaprodutos.produtos) {
+              TabelaProdutos.setValueAt(produto.getId(),i,0);
+              TabelaProdutos.setValueAt(produto.getNome(), i, 1);
+              TabelaProdutos.setValueAt(produto.getQntd(), i, 2);
+              TabelaProdutos.setValueAt(produto.getPrecoVenda(), i, 3);
+              TabelaProdutos.setValueAt(produto.getPrecoCompra(), i, 4);
+              TabelaProdutos.setValueAt(produto.getDescricao(), i, 5);
+              i++;
+        }     
+        i = 0;
+        listaprodutos.produtos.removeAll(listaprodutos.produtos);
+    listaprodutos.produtos = prateleira.consultarProdutoPrateleira();
+         for (Produto produto : listaprodutos.produtos) {
+              TabelaProdutosPrateleira.setValueAt(produto.getId(),i,0);
+              TabelaProdutosPrateleira.setValueAt(produto.getNome(), i, 1);
+              TabelaProdutosPrateleira.setValueAt(produto.getQntd(), i, 2);
+              
+              TabelaProdutosPrateleira.setValueAt(produto.getPrecoCompra(), i,3);
+              TabelaProdutosPrateleira.setValueAt(produto.getPrecoVenda(), i, 4);
+              TabelaProdutosPrateleira.setValueAt(produto.getDescricao(), i, 5);
+              i++;
+        } 
+        }
   
     /**
      * Creates new form PrateleiraIDE
@@ -38,12 +67,12 @@ public class PrateleiraIDE extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        TabelaProdutos = new javax.swing.JTable();
+        TabelaProdutosPrateleira = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         nomeProdutoAtualizar = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        precoFinalAtualizar = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         nomeProdutoDeletar = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
@@ -57,6 +86,9 @@ public class PrateleiraIDE extends javax.swing.JFrame {
         precoVendaAdicionar = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         precoCompraAdicionar = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        TabelaProdutos = new javax.swing.JTable();
+        jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -71,7 +103,157 @@ public class PrateleiraIDE extends javax.swing.JFrame {
 
         jLabel2.setText("QUANTIDADE");
 
-        jLabel3.setText("PRODUTOS NA PRATELEIRA");
+        jLabel3.setText("PRODUTOS EM ESTOQUE");
+
+        TabelaProdutosPrateleira.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "NOME", "QUANTIDADE", "PRECO COMPRA", "PREÇO FINAL", "DESCRICAO"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Float.class, java.lang.Float.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        TabelaProdutosPrateleira.setUpdateSelectionOnSort(false);
+        TabelaProdutosPrateleira.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TabelaProdutosPrateleiraMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(TabelaProdutosPrateleira);
+
+        jButton2.setText("ATUALIZAR");
+
+        jLabel4.setText("ATUALIZAR PRECO DE VENDA");
+
+        nomeProdutoAtualizar.setEditable(false);
+
+        jLabel5.setText("PRECO FINAL");
+
+        jLabel6.setText("DELETAR PRODUTO");
+
+        jButton3.setText("DELETAR");
+
+        jButton5.setText("ATUALIZAR TABELAS");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setText("ID PRODUTO");
+
+        jLabel8.setText("DESCRICAO");
+
+        jLabel9.setText("PRECO VENDA");
+
+        jLabel10.setText("PRECO COMPRA");
 
         TabelaProdutos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -194,34 +376,9 @@ public class PrateleiraIDE extends javax.swing.JFrame {
                 TabelaProdutosMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(TabelaProdutos);
+        jScrollPane2.setViewportView(TabelaProdutos);
 
-        jButton2.setText("ATUALIZAR");
-
-        jLabel4.setText("ATUALIZAR PRECO DE VENDA");
-
-        nomeProdutoAtualizar.setEditable(false);
-
-        jLabel5.setText("PRECO FINAL");
-
-        jLabel6.setText("DELETAR PRODUTO");
-
-        jButton3.setText("DELETAR");
-
-        jButton5.setText("ATUALIZAR");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-
-        jLabel7.setText("ID PRODUTO");
-
-        jLabel8.setText("DESCRICAO");
-
-        jLabel9.setText("PRECO VENDA");
-
-        jLabel10.setText("PRECO COMPRA");
+        jLabel11.setText("PRODUTOS DA PRATELEIRA");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -257,26 +414,29 @@ public class PrateleiraIDE extends javax.swing.JFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(precoCompraAdicionar, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 604, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 579, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 579, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(nomeProdutoDeletar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nomeProdutoAtualizar, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGap(18, 18, 18)
+                        .addComponent(jLabel11)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(nomeProdutoDeletar, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(nomeProdutoAtualizar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel5)
+                                        .addGap(51, 51, 51))
+                                    .addComponent(precoFinalAtualizar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel6))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton2)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -297,14 +457,9 @@ public class PrateleiraIDE extends javax.swing.JFrame {
                     .addComponent(jButton1)
                     .addComponent(nomeProdutoAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(idprodutoadicionar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(jButton5)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel9)
@@ -316,61 +471,71 @@ public class PrateleiraIDE extends javax.swing.JFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(precoVendaAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(descricaoProdutoAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)))
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(nomeProdutoAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel3))
+                    .addComponent(jButton5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nomeProdutoDeletar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3))
-                .addGap(25, 25, 25))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(nomeProdutoAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(precoFinalAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(nomeProdutoDeletar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton2)
+                        .addGap(31, 31, 31)
+                        .addComponent(jButton3)))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      prateleira.adicionar_Produto(2,Integer.parseInt(idprodutoadicionar.getText()),nomeProdutoAdicionar.getText(),descricaoProdutoAdicionar.getText(),Integer.parseInt(qntdProdutoAdicionar.getText().toString()),Float.parseFloat(precoVendaAdicionar.getText()),Float.parseFloat(precoCompraAdicionar.getText()));
+      prateleira.adicionarProdutoPrateleira(2,Integer.parseInt(idprodutoadicionar.getText()),Integer.parseInt(qntdProdutoAdicionar.getText()),descricaoProdutoAdicionar.getText(),Float.parseFloat(precoVendaAdicionar.getText()),Float.parseFloat(precoCompraAdicionar.getText()),nomeProdutoAdicionar.getText());
+       
+                                              
+      atualizarTabelas();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-         int i = 0;
-          
-       listaprodutos.produtos  = prateleira.consultarProduto();           
-
-
-        for (Produto produto : listaprodutos.produtos) {
-              TabelaProdutos.setValueAt(produto.getId(),i,0);
-              TabelaProdutos.setValueAt(produto.getNome(), i, 1);
-              TabelaProdutos.setValueAt(produto.getQntd(), i, 2);
-              TabelaProdutos.setValueAt(produto.getPrecoVenda(), i, 3);
-              i++;
-        }     
-   
+        atualizarTabelas();
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void TabelaProdutosPrateleiraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabelaProdutosPrateleiraMouseClicked
+         int linha = TabelaProdutosPrateleira.getSelectedRow();
+         nomeProdutoAtualizar.setText(TabelaProdutosPrateleira.getValueAt(linha,1).toString());   
+         nomeProdutoDeletar.setText(TabelaProdutosPrateleira.getValueAt(linha,1).toString());
+         
+         precoFinalAtualizar.setText(TabelaProdutosPrateleira.getValueAt(linha,4).toString());
+         
+       
+    }//GEN-LAST:event_TabelaProdutosPrateleiraMouseClicked
+
     private void TabelaProdutosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabelaProdutosMouseClicked
-       TabelaProdutos.removeAll();
-        int linha = TabelaProdutos.getSelectedRow();
+       int linha = TabelaProdutos.getSelectedRow();
+       
         idprodutoadicionar.setText(TabelaProdutos.getValueAt(linha,0).toString());
-        nomeProdutoAtualizar.setText(TabelaProdutos.getValueAt(linha,1).toString());
+       
         nomeProdutoDeletar.setText(TabelaProdutos.getValueAt(linha,1).toString());
         nomeProdutoAdicionar.setText(TabelaProdutos.getValueAt(linha,1).toString());
         qntdProdutoAdicionar.setText(TabelaProdutos.getValueAt(linha,2).toString());
         precoCompraAdicionar.setText(TabelaProdutos.getValueAt(linha,3).toString());
         precoVendaAdicionar.setText(TabelaProdutos.getValueAt(linha,4).toString());
         descricaoProdutoAdicionar.setText(TabelaProdutos.getValueAt(linha,5).toString());
-       
     }//GEN-LAST:event_TabelaProdutosMouseClicked
 
     /**
@@ -409,6 +574,7 @@ public class PrateleiraIDE extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TabelaProdutos;
+    private javax.swing.JTable TabelaProdutosPrateleira;
     private javax.swing.JTextField descricaoProdutoAdicionar;
     private javax.swing.JTextField idprodutoadicionar;
     private javax.swing.JButton jButton1;
@@ -417,6 +583,7 @@ public class PrateleiraIDE extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -426,11 +593,12 @@ public class PrateleiraIDE extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField nomeProdutoAdicionar;
     private javax.swing.JTextField nomeProdutoAtualizar;
     private javax.swing.JTextField nomeProdutoDeletar;
     private javax.swing.JTextField precoCompraAdicionar;
+    private javax.swing.JTextField precoFinalAtualizar;
     private javax.swing.JTextField precoVendaAdicionar;
     private javax.swing.JTextField qntdProdutoAdicionar;
     // End of variables declaration//GEN-END:variables

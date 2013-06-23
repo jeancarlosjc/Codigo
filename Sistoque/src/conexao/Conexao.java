@@ -12,7 +12,9 @@ import java.util.List;
 public class Conexao {
 
     Lista listaprodutos = new Lista();
+     
     Produto produto = new Produto();
+   
     Produto[] produtos = new Produto[1000];
     Connection con;
     Statement stmt;
@@ -21,6 +23,7 @@ public class Conexao {
     String user = "root";
     String password = "1234567890";
     String driver = "com.mysql.jdbc.Driver";
+    
 
     public void openConnectionMySql() {
         try {
@@ -104,35 +107,67 @@ public class Conexao {
     }
     // Prateleira (Adicionar Produto , Retirar Produto, Adicionar Preco Final).	
 
-    public void adicionarProdutoPrateleira(int ID_Estabelecimento, int id_produto, String nome_produto, String descricao, int qntd, float precoVenda, float precoCompra) {
+    public void adicionarProdutoPrateleira(int ID_Estabelecimento,int id_produto, int qntd  ,String descricao,float precoVenda, float precoCompra, String nome_produto) {
+      
+
         try {
+
             PreparedStatement pst = null;
 
             openConnectionMySql();
 
-            pst = con.prepareStatement("INSERT INTO Prateleira(ID_Estabelecimento,id_produto,quantidade_produto,descricao,precoVenda,precoCompra,nome_produto) VALUES("+ID_Estabelecimento+"," +id_produto +","+qntd+","+descricao+","+precoVenda+","+precoCompra+","+nome_produto+",2)");
+            pst = con.prepareStatement("INSERT INTO Prateleira(ID_Estabelecimento,id_produto,quantidade_produto,descricao,precoVenda,precoCompra,nome_produto) VALUES("+ID_Estabelecimento+"," +id_produto +","+qntd+","+descricao+","+precoVenda+","+precoCompra+","+nome_produto+")");
             pst.executeUpdate();
         } catch (Exception e) {
             System.out.println("ERRO :" + e);
-        }
+        }      
     }
 
     public void retirarProdutoPrateleira(int id, int qntd) {
     }
 
-    public void atualizarPrecoFinal(int id, String precoFinal) {
+    public void atualizarPrecoFinal(int id_produto, String precoFinal) {
         try {
             PreparedStatement pst = null;
 
             openConnectionMySql();
 
-            pst = con.prepareStatement("update PRATELEIRA set precofinal = " + precoFinal + "");
+            pst = con.prepareStatement("update PRATELEIRA set precofinal = " + precoFinal +"where id_produto = "+id_produto+"");
             pst.executeUpdate();
         } catch (Exception e) {
             System.out.println("ERRO :" + e);
         }
     }
+ public List<Produto> consultarProdutoPrateleira(){
+     int i = 0;
+        try {
+            for (int j = 0; j < 1000; j++) {
+                produtos[j] = new Produto();
+            }
+            openConnectionMySql();
+            stmt = con.createStatement();
 
+            String SQL = "select * from Prateleira";
+            rs = stmt.executeQuery(SQL);
+            while (rs.next()) {
+                produtos[i].setId(rs.getString("ID_Produto"));
+                produtos[i].setNome(rs.getString("nome_produto"));
+                produtos[i].setDescricao(rs.getString("descricao"));
+                produtos[i].setQntd(rs.getInt("quantidade_produto"));
+                produtos[i].setPrecoCompra(rs.getFloat("PrecoVenda"));
+                produtos[i].setPrecoVenda(rs.getFloat("PrecoCompra"));
+                listaprodutos.produtos.add(produtos[i]);
+                i++;
+            }
+            return (List<Produto>) listaprodutos.produtos;
+        } catch (Exception e) {
+            System.out.println("Erro na conexao com o banco" + e);
+
+
+        }
+
+        return (List<Produto>) listaprodutos.produtos;
+ }
     public void atualizarProduto_prateleira(String id, String qntd) {
     }
     //Venda (Inserir Venda , Consultar Venda , Deletar Venda).
@@ -146,7 +181,4 @@ public class Conexao {
     public void deletarVenda(String id) {
     }
 
-    public static void main(String[] args) {
-        Conexao a = new Conexao();
-    }
 }

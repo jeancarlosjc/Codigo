@@ -23,14 +23,19 @@ public class Prateleira {
     private float precoCompra;
     
 
-    public void adicionar_Produto(int ID_Estabelecimento, int id_produto, String nome_produto, String descricao, int qntd, float precoVenda, float precoCompra) {
-        conexao.adicionarProdutoPrateleira(ID_Estabelecimento, id_produto,  nome_produto,  descricao, qntd,  precoVenda,  precoCompra);
+    public void adicionarProdutoPrateleira(int ID_Estabelecimento, int id_produto, int qntd, String descricao, float precoVenda, float precoCompra, String nome_produto) {
+        conexao.adicionarProdutoPrateleira(ID_Estabelecimento,id_produto,qntd,descricao,precoVenda,precoCompra,nome_produto);
+                            
     }
-
+    public void update_prateleira(){
+        
+    }
     public void retirar_Produto() {
         conexao.retirarProdutoPrateleira(id, qntd);
     }
-
+    public List<Produto> consultarProdutoPrateleira(){
+        return  conexao.consultarProdutoPrateleira();
+    }
     public List<Produto> consultarProduto() {
         return  conexao.consultarProduto();
     }
@@ -73,5 +78,7 @@ public class Prateleira {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
+
+   
  
 }
