@@ -82,7 +82,7 @@ public class Estoque {
         this.quant = quant;
     }
     public void adicionarProdutoEstoque(int id,String nome, String descricao, int qntd, float precoVenda, float precoCompra){
-        conexao.adicionarProdutoEstoque(qntd, nome, descricao, qntd, precoVenda, precoCompra);
+        conexao.adicionarProdutoEstoque(id, nome, descricao, qntd, precoVenda, precoCompra);
     }
     public void retirarProdutoEstoque(int id , String nome){
         
